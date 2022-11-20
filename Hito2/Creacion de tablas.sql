@@ -57,7 +57,8 @@ CREATE TABLE Direccion
   Portal INT NOT NULL,
   NCalle VARCHAR(40) NOT NULL,
   PRIMARY KEY (Numero, Piso, Letra, Portal),
-  FOREIGN KEY (NCalle) REFERENCES Calle(NCalle)
+  FOREIGN KEY (NCalle) REFERENCES Calle(NCalle),
+  UNIQUE (Numero, Piso, Letra, Portal)
 );
 
 CREATE TABLE Centro_C
