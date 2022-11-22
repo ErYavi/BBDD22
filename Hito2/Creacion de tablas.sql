@@ -52,9 +52,9 @@ CREATE TABLE Calle
 CREATE TABLE Direccion
 (
   Numero INT NOT NULL,
-  Piso INT NOT NULL,
-  Letra INT NOT NULL,
-  Portal INT NOT NULL,
+  Piso INT,
+  Letra VARCHAR(2),
+  Portal VARCHAR(2),
   NCalle VARCHAR(40) NOT NULL,
   PRIMARY KEY (Numero, Piso, Letra, Portal),
   FOREIGN KEY (NCalle) REFERENCES Calle(NCalle)
