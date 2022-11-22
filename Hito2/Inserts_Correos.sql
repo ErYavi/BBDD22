@@ -23,7 +23,16 @@ INSERT INTO Calle (Ncalle,Nmunicipio) VALUES
 ('Paseo de Europa','Alcobendas'),
 ('Avenida de España', 'Alcobendas'),
 ('Paseo de la Castellana', 'Madrid'),
+('Calle Mayor', 'Alcobendas'),
+('Calle Mayor', 'Madrid'),
 ('Paseo de San Roque', 'Avila');
 
-INSERT INTO Direccion (Numero, Piso, Letra, Portal, NCalle) VALUES
-(3,1,'D','21','Paseo de Europa')
+INSERT INTO Direccion (Numero, Piso, Letra, Portal, NCalle, NMunicipio) VALUES
+('3','1','D','F','Paseo de Europa', 'Alcobendas'),
+('39','4', 'NA', 'NA','Paseo de la Chopera', 'Alcobendas'),
+('23','NA','NA','NA','Paseo de San Roque', 'Avila'),
+('349','4', 'NA', 'NA','Paseo de la Castellana', 'Madrid'),
+('349','2', 'B', 'NA','Calle Mayor', 'Madrid');
+
+INSERT INTO Centro_C (Cod_CC, NombreCC, Max_pq, Max_ct, NMunicipio) VALUES
+()
