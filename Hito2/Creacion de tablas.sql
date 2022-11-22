@@ -8,7 +8,7 @@ USE Correos;
 
 CREATE TABLE Cartero
 (
-  DNI_Car VARCHAR(9) UNIQUE NOT NULL,
+  DNI_Car VARCHAR(9) NOT NULL,
   Nom_C VARCHAR(20) NOT NULL,
   Apellidos_C VARCHAR(30) NOT NULL,
   PRIMARY KEY (DNI_Car)
@@ -16,7 +16,7 @@ CREATE TABLE Cartero
 
 CREATE TABLE Ruta
 (
-  ID_Ruta VARCHAR(11) UNIQUE NOT NULL,
+  ID_Ruta VARCHAR(11) NOT NULL,
   PRIMARY KEY (ID_Ruta)
 );
 
@@ -29,7 +29,7 @@ CREATE TABLE Turno
 
 CREATE TABLE Provincia
 (
-  NProvincia VARCHAR(20) UNIQUE NOT NULL,
+  NProvincia VARCHAR(20) NOT NULL,
   PRIMARY KEY (NProvincia)
 );
 
@@ -45,7 +45,7 @@ CREATE TABLE Calle
 (
   NCalle VARCHAR(40) NOT NULL,
   NMunicipio VARCHAR(40) NOT NULL,
-  PRIMARY KEY (NCalle),
+  PRIMARY KEY (NCalle, NMunicipio),
   FOREIGN KEY (NMunicipio) REFERENCES Municipio(NMunicipio)
 );
 
@@ -56,8 +56,9 @@ CREATE TABLE Direccion
   Letra VARCHAR(2),
   Portal VARCHAR(2),
   NCalle VARCHAR(40) NOT NULL,
-  PRIMARY KEY (Numero, Piso, Letra, Portal),
-  FOREIGN KEY (NCalle) REFERENCES Calle(NCalle)
+  NMunicipio VARCHAR(40) NOT NULL,
+  PRIMARY KEY (Numero, Piso, Letra, Portal, NCalle, NMunicipio),
+  FOREIGN KEY (NCalle, NMunicipio) REFERENCES Calle(NCalle, NMunicipio)
 );
 
 CREATE TABLE Centro_C
@@ -77,8 +78,9 @@ CREATE TABLE Segmento
   N_fin INT NOT NULL,
   ID_Seg VARCHAR(9) UNIQUE NOT NULL,
   NCalle VARCHAR(40) NOT NULL,
-  PRIMARY KEY (ID_Seg),
-  FOREIGN KEY (NCalle) REFERENCES Calle(NCalle)
+  NMunicipio VARCHAR(40) NOT NULL,
+  PRIMARY KEY (ID_Seg, NCalle, NMunicipio),
+  FOREIGN KEY (NCalle, NMunicipio) REFERENCES Calle(NCalle, NMunicipio)
 );
 
 CREATE TABLE Usuario_Gen
@@ -90,8 +92,10 @@ CREATE TABLE Usuario_Gen
   Piso INT NOT NULL,
   Letra INT NOT NULL,
   Portal INT NOT NULL,
+  NCalle VARCHAR(40) NOT NULL,
+  NMunicipio VARCHAR(40) NOT NULL,
   PRIMARY KEY (ID_Gen),
-  FOREIGN KEY (Numero, Piso, Letra, Portal) REFERENCES Direccion(Numero, Piso, Letra, Portal)
+  FOREIGN KEY (Numero, Piso, Letra, Portal, NCalle, NMunicipio) REFERENCES Direccion(Numero, Piso, Letra, Portal, NCalle, NMunicipio)
 );
 
 CREATE TABLE Ruta_Incuye_Seg
@@ -99,15 +103,16 @@ CREATE TABLE Ruta_Incuye_Seg
   NOrden INT NOT NULL,
   ID_Seg VARCHAR(9) NOT NULL,
   ID_Ruta VARCHAR(9) NOT NULL,
-  PRIMARY KEY (ID_Seg, ID_Ruta),
-  FOREIGN KEY (ID_Seg) REFERENCES Segmento(ID_Seg),
-  FOREIGN KEY (ID_Ruta) REFERENCES Ruta(ID_Ruta),
-  UNIQUE (ID_Seg, ID_Ruta)
+  NCalle VARCHAR(40) NOT NULL,
+  NMunicipio VARCHAR(40) NOT NULL,
+  PRIMARY KEY (ID_Seg, ID_Ruta, NCalle, NMunicipio),
+  FOREIGN KEY (ID_Seg, NCalle, NMunicipio) REFERENCES Segmento(ID_Seg, NCalle, NMunicipio),
+  FOREIGN KEY (ID_Ruta) REFERENCES Ruta(ID_Ruta)
 );
 
 CREATE TABLE Oficina
 (
-  Cod_O VARCHAR(9) UNIQUE NOT NULL,
+  Cod_O VARCHAR(9) NOT NULL,
   NMunicipio VARCHAR(40) NOT NULL,
   Cod_CC VARCHAR(9) NOT NULL,
   PRIMARY KEY (Cod_O),
@@ -118,7 +123,7 @@ CREATE TABLE Oficina
 CREATE TABLE Coche
 (
   Capacidad INT NOT NULL,
-  Matricula VARCHAR(7) UNIQUE NOT NULL,
+  Matricula VARCHAR(7) NOT NULL,
   Cod_O VARCHAR(9) NOT NULL,
   PRIMARY KEY (Matricula),
   FOREIGN KEY (Cod_O) REFERENCES Oficina(Cod_O)
@@ -127,19 +132,19 @@ CREATE TABLE Coche
 CREATE TABLE Reparto
 (
   FechaR DATE NOT NULL,
-  ID_Reparto VARCHAR(9) UNIQUE NOT NULL,
-  DNI VARCHAR(9) NOT NULL,
+  ID_Reparto VARCHAR(9) NOT NULL,
+  DNI_Car VARCHAR(9) NOT NULL,
   ID_Ruta VARCHAR(9) NOT NULL,
   Matricula VARCHAR(7) NOT NULL,
   PRIMARY KEY (ID_Reparto),
-  FOREIGN KEY (DNI) REFERENCES Cartero(DNI_Car),
+  FOREIGN KEY (DNI_Car) REFERENCES Cartero(DNI_Car),
   FOREIGN KEY (ID_Ruta) REFERENCES Ruta(ID_Ruta),
   FOREIGN KEY (Matricula) REFERENCES Coche(Matricula)
 );
 
 CREATE TABLE Area_envio
 (
-  ID_Area VARCHAR(9) UNIQUE NOT NULL,
+  ID_Area VARCHAR(9) NOT NULL,
   Cod_O VARCHAR(9) NOT NULL,
   PRIMARY KEY (ID_Area),
   FOREIGN KEY (Cod_O) REFERENCES Oficina(Cod_O)
@@ -166,7 +171,7 @@ CREATE TABLE Area_Incluye_Seg
   FOREIGN KEY (ID_Seg) REFERENCES Segmento(ID_Seg)
 );
 
-CREATE TABLE Area_Incluye_Area
+CREATE TABLE Area_Incluye_Area #SNC: UN AREA NO SE CONTIENE A SI MISMA
 (
   ID_Padre VARCHAR(9) NOT NULL,
   ID_Hijo VARCHAR(9) NOT NULL,
@@ -186,7 +191,7 @@ CREATE TABLE Cartero_Reparte_Area
 
 CREATE TABLE Carta
 (
-  CT VARCHAR (12) UNIQUE NOT NULL,
+  CT VARCHAR (12) NOT NULL,
   Formato VARCHAR(2) NOT NULL,
   DNI_Car VARCHAR(9) NOT NULL,
   ID_Emisor INT NOT NULL,
@@ -205,9 +210,15 @@ CREATE TABLE Usuario_Iden
   Apellidos_Iden VARCHAR(20) NOT NULL,
   DNI_Usuario VARCHAR(9) NOT NULL,
   Nom_Iden VARCHAR(20) NOT NULL,
+  PRIMARY KEY (DNI_Usuario)
+);
+
+CREATE TABLE Autorizacion #SNC: UN USUARIO NO SE AUTORIZA A SI MISMO
+(
   DNI_Autorizado VARCHAR(9) NOT NULL,
-  PRIMARY KEY (DNI_Usuario),
-  FOREIGN KEY (DNI_Autorizado) REFERENCES Usuario_Iden(DNI_Usuario) #ESTO DEBERIA ESTAR EN UNA TABLA APARTE DADO QUE A CARDINALIDAD DEBERIA SER N-N (DE AQUI HACIA ABAJO FALTAN UNIQUE)
+  DNI_Autoriza VARCHAR(9) NOT NULL,
+  FOREIGN KEY (DNI_Autorizado) REFERENCES Usuario_Iden(DNI_Usuario),
+  FOREIGN KEY (DNI_Autoriza) REFERENCES Usuario_Iden(DNI_Usuario)
 );
 
 CREATE TABLE Recogida
@@ -218,10 +229,12 @@ CREATE TABLE Recogida
   Piso INT NOT NULL,
   Letra INT NOT NULL,
   Portal INT NOT NULL,
+  NCalle VARCHAR(40) NOT NULL,
+  NMunicipio VARCHAR(40) NOT NULL,
   DNI_Usuario VARCHAR(9) NOT NULL,
   DNI_Car VARCHAR(9) NOT NULL,
   PRIMARY KEY (ID_Rec),
-  FOREIGN KEY (Numero, Piso, Letra, Portal) REFERENCES Direccion(Numero, Piso, Letra, Portal),
+  FOREIGN KEY (Numero, Piso, Letra, Portal, NCalle, NMunicipio) REFERENCES Direccion(Numero, Piso, Letra, Portal, NCalle, NMunicipio),
   FOREIGN KEY (DNI_Usuario) REFERENCES Usuario_Iden(DNI_Usuario),
   FOREIGN KEY (DNI_Car) REFERENCES Cartero(DNI_Car)
 );
@@ -274,12 +287,14 @@ CREATE TABLE Entrega_Cert
 
 CREATE TABLE Iden_Vive_Dir
 (
-  DNI_Usuario VARCHAR(9) NOT NULL,
+  DNI_Usuario VARCHAR(9) UNIQUE NOT NULL,
   Numero INT NOT NULL,
   Piso INT NOT NULL,
   Letra INT NOT NULL,
   Portal INT NOT NULL,
-  PRIMARY KEY (DNI_Usuario, Numero, Piso, Letra, Portal),
+  NCalle VARCHAR(40) NOT NULL,
+  NMunicipio VARCHAR(40) NOT NULL,
+  PRIMARY KEY (DNI_Usuario, Numero, Piso, Letra, Portal, NCalle, NMunicipio),
   FOREIGN KEY (DNI_Usuario) REFERENCES Usuario_Iden(DNI_Usuario),
-  FOREIGN KEY (Numero, Piso, Letra, Portal) REFERENCES Direccion(Numero, Piso, Letra, Portal)
+  FOREIGN KEY (Numero, Piso, Letra, Portal, NCalle, NMunicipio) REFERENCES Direccion(Numero, Piso, Letra, Portal, NCalle, NMunicipio)
 );
