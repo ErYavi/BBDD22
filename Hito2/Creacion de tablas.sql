@@ -102,7 +102,7 @@ CREATE TABLE Ruta_Incuye_Seg
 (
   NOrden INT NOT NULL,
   ID_Seg VARCHAR(9) NOT NULL,
-  ID_Ruta VARCHAR(9) NOT NULL,
+  ID_Ruta VARCHAR(11) NOT NULL,
   NCalle VARCHAR(40) NOT NULL,
   NMunicipio VARCHAR(40) NOT NULL,
   PRIMARY KEY (ID_Seg, ID_Ruta, NCalle, NMunicipio),
@@ -122,7 +122,7 @@ CREATE TABLE Oficina
 
 CREATE TABLE Coche
 (
-  Capacidad INT NOT NULL,
+  Capacidad FLOAT NOT NULL,
   Matricula VARCHAR(7) NOT NULL,
   Cod_O VARCHAR(9) NOT NULL,
   PRIMARY KEY (Matricula),
@@ -131,11 +131,11 @@ CREATE TABLE Coche
 
 CREATE TABLE Reparto
 (
-  FechaR DATE NOT NULL,
+  FechaR DATE NOT NULL DEFAULT (current_date()),
   ID_Reparto VARCHAR(9) NOT NULL,
   DNI_Car VARCHAR(9) NOT NULL,
-  ID_Ruta VARCHAR(9) NOT NULL,
-  Matricula VARCHAR(7) NOT NULL,
+  ID_Ruta VARCHAR(11) NOT NULL,
+  Matricula VARCHAR(7),
   PRIMARY KEY (ID_Reparto),
   FOREIGN KEY (DNI_Car) REFERENCES Cartero(DNI_Car),
   FOREIGN KEY (ID_Ruta) REFERENCES Ruta(ID_Ruta),
