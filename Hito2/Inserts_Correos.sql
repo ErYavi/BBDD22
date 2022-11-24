@@ -27,7 +27,7 @@ INSERT INTO Calle (Ncalle,Nmunicipio) VALUES
 ('Calle Mayor', 'Madrid'),
 ('Paseo de San Roque', 'Avila');
 
-INSERT INTO Direccion (Numero, Piso, Letra, Portal, NCalle, NMunicipio) VALUES
+INSERT INTO Direccion (Numero, Piso, Letra, Portal, NCalle, NMunicipio) VALUES # NA significa que NO APLICA.
 ('3','1','D','F','Paseo de Europa', 'Alcobendas'),
 ('39','4', 'NA', 'NA','Paseo de la Chopera', 'Alcobendas'),
 ('23','NA','NA','NA','Paseo de San Roque', 'Avila'),
@@ -35,4 +35,12 @@ INSERT INTO Direccion (Numero, Piso, Letra, Portal, NCalle, NMunicipio) VALUES
 ('349','2', 'B', 'NA','Calle Mayor', 'Madrid');
 
 INSERT INTO Centro_C (Cod_CC, NombreCC, Max_pq, Max_ct, NMunicipio) VALUES
+('CC-MAD-01','Madrid Centro',550,1750,'Madrid'),
+('CC-MAD-02','Madrid Norte',5000,80000,'Madrid'),
+('CC-MAD-03','Madrid Sur',2000,10000,'Madrid'),
+('CC-AV-01','Avila 1',550,1750,'Avila'),
+('CC-CA-01','Madrid Centro 1',550,1750,'Jerez de la Frontera'),
+('CC-MAD-04','Alcobendas',8000,100000,'Alcobendas');
+
+INSERT INTO Segmento (N_ini, N_fin, ID_Seg, NCalle, NMunicipio) VALUES
 ()
