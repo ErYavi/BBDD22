@@ -31,8 +31,8 @@ INSERT INTO Direccion (Numero, Piso, Letra, Portal, NCalle, NMunicipio) VALUES #
 ('3','1','D','F','Paseo de Europa', 'Alcobendas'),
 ('39','4', 'NA', 'NA','Paseo de la Chopera', 'Alcobendas'),
 ('23','NA','NA','NA','Paseo de San Roque', 'Avila'),
-('349','4', 'NA', 'NA','Paseo de la Castellana', 'Madrid'),
-('349','2', 'B', 'NA','Calle Mayor', 'Madrid');
+('49','4', 'NA', 'NA','Paseo de la Castellana', 'Madrid'),
+('9','2', 'B', 'NA','Calle Mayor', 'Madrid');
 
 INSERT INTO Centro_C (Cod_CC, NombreCC, Max_pq, Max_ct, NMunicipio) VALUES
 ('CC-MAD-01','Madrid Centro',550,1750,'Madrid'),
@@ -43,4 +43,8 @@ INSERT INTO Centro_C (Cod_CC, NombreCC, Max_pq, Max_ct, NMunicipio) VALUES
 ('CC-MAD-04','Alcobendas',8000,100000,'Alcobendas');
 
 INSERT INTO Segmento (N_ini, N_fin, ID_Seg, NCalle, NMunicipio) VALUES
-()
+(1,50,'SE-MAD-01','Paseo de la Castellana', 'Madrid'),
+(50,100,'SE-MAD-02','Paseo de la Castellana', 'Madrid'),
+(1,20,'SE-AV-03','Paseo de San Roque', 'Avila'),
+(1,50,'SE-ALC-04','Paseo de la Chopera', 'Alcobendas'),
+(1,50,'SE-ALC-05','Paseo de la Chopera', 'Alcobendas');
