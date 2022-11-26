@@ -175,3 +175,22 @@ INSERT INTO Paquete(PQ,Dimensiones,Peso,ID_Rec,ID_Emisor,ID_Receptor,DNI_Car,ID_
 ('PQ8465184684','7X8',60.2,NULL,4,3,'54156156I','RE-ALC-01'),
 ('PQ2135484652','15X8',70.8,'RD-ACB-01',2,5,'15621566H','RE-MAD-02'),
 ('PQ4171564165','20x15',45.8,NULL,6,5,'54156156I','RE-MAD-01');
+
+INSERT INTO Certificada(CE,Urgencia,DNI_Emisor,DNI_Receptor,DNI_Car,ID_Reparto) VALUES
+('CE3216945678','Alta','85465165K','03213215V','01542462N','RE-MAD-02'),
+('CE2846511856','Alta','45456546W','13468455Z','54156156I','RE-ACB-01'),
+('CE9895623102','Baja','51651065F','85465165K','15621566H','RE-ACB-02'),
+('CE9369559254','Baja','13468455Z','03213215V','98854312B','RE-MAD-03');
+
+INSERT INTO Entrega_Cert(Hora,Fecha,DNI_Usuario,CE,DNI_Car) VALUES # La hora esta en formato hh:mm:ss
+('15:20:56','2022-06-22','03213215V','CE3216945678','01542462N'),
+('17:05:23','2022-11-06','13468455Z','CE2846511856','54156156I'),
+('16:45:37','2022-03-03','85465165K','CE9895623102','15621566H'),
+('10:02:15','2022-08-15','03213215V','CE9369559254','98854312B');
+
+INSERT INTO Iden_Vive_Dir(DNI_Usuario,Numero,Piso,Letra,Portal,NCalle,NMunicipio) VALUES
+('85465165K','6','3','D','F','Paseo de Europa', 'Alcobendas'),
+('51651065F','15','5','C','A','Avenida de America','Madrid'),
+('03213215V','61','9', 'NA', 'NA','Paseo de la Castellana', 'Madrid'),
+('13468455Z','39','8', 'NA', 'NA','Paseo de la Chopera', 'Alcobendas'),
+('45456546W','6','22','NA','NA','Avenida de America','Madrid');
