@@ -1,0 +1,1 @@
+Aqui van los apartados 4a y 4b (Triggers)
