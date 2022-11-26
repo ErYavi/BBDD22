@@ -117,6 +117,7 @@ INSERT INTO Reparto(FechaR,Id_Reparto,DNI_Car,Id_ruta,Matricula) VALUES
 
 INSERT INTO Area_envio(ID_Area,Cod_O) VALUES
 ('AR-MAD-01','OF-MAD-01'),
+('AR-MAD-04','OF-MAD-01'),
 ('AR-MAD-02','OF-MAD-02'),
 ('AR-MAD-03','OF-MAD-03'),
 ('AR-ALC-01','OF-ALC-01'),
@@ -138,6 +139,8 @@ INSERT INTO Area_Incluye_Seg(ID_area,Id_seg) VALUES
 ('AR-MAD-01','SE-MAD-02'),
 ('AR-MAD-03','SE-ALC-11'),
 ('AR-MAD-03','SE-ALC-12'),
+('AR-MAD-04','SE-MAD-03'),
+('AR-MAD-04','SE-MAD-04'),
 ('AR-ALC-01','SE-ALC-04'),
 ('AR-ACB-02','SE-ACB-04'),
 ('AR-ACB-01','SE-ACB-05');
