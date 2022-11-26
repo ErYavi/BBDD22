@@ -13,8 +13,10 @@ INSERT INTO Ruta (ID_Ruta) VALUES
 ('RU-CAD-0001');
 
 INSERT INTO Turno (Jornada, Horario) VALUES
+('Madrugada', '05:00-09:00'),
 ('Mañana', '09:00-13:00'),
-('Tarde', '15:00-19:00');
+('Tarde', '15:00-19:00'),
+('Noche', '19:00-23:00');
 
 INSERT INTO Provincia (NProvincia) VALUES
 ('Cadiz'),
@@ -123,9 +125,12 @@ INSERT INTO Area_envio(ID_Area,Cod_O) VALUES
 
 INSERT INTO Trabajo(Fecha_ini,Jornada,Cod_O,DNI_Car) VALUES
 ('2022-01-01','Mañana','OF-MAD-01','98854312B'),
+('2022-01-01','Madrugada','OF-MAD-01','98854312B'),
+('2022-01-01','Noche','OF-MAD-01','15621566H'),
+('2022-01-01','Tarde','OF-MAD-01','54156156I'),
 ('2022-01-01','Mañana','OF-MAD-02','01542462N'),
 ('2022-01-01','Tarde','OF-MAD-03','01542462N'),
-('2022-01-01','Tarde','OF-ACB-01','54156156I'),
+('2022-01-01','Mañana','OF-ACB-01','54156156I'),
 ('2022-01-01','Tarde','OF-ALC-01','15621566H');
 
 INSERT INTO Area_Incluye_Seg(ID_area,Id_seg) VALUES
