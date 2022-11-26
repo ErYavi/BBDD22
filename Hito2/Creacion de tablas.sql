@@ -98,7 +98,7 @@ CREATE TABLE Usuario_Gen
   FOREIGN KEY (Numero, Piso, Letra, Portal, NCalle, NMunicipio) REFERENCES Direccion(Numero, Piso, Letra, Portal, NCalle, NMunicipio)
 );
 
-CREATE TABLE Ruta_Incuye_Seg
+CREATE TABLE Ruta_Incluye_Seg
 (
   NOrden INT NOT NULL,
   ID_Seg VARCHAR(9) NOT NULL,
