@@ -36,10 +36,12 @@ public class UsuarioGenerico {
     private String NMunicipio;
 
     // @TODO completar las anotaciones de todos los atributos
-    public UsuarioGenerico(Long id, String nombre, String apellidos, Integer numero, Integer piso, String letra, String portal, String ncalle, String NMunicipio) {  // @TODO: completar
+    public UsuarioGenerico(Long id, String nombre, String apellidos, Integer numero, Integer piso, String letra,
+            String portal, String ncalle, String NMunicipio) { // @TODO: completar
         // @TODO completar el constructor de la clase.
-        //  Para ello es necesario un "long"" con la ID, un string con el nombre del usuario y otro string con el apellido
-        //  Cree e inicialice el resto de atributos a los valores que considere oportunos
+        // Para ello es necesario un "long"" con la ID, un string con el nombre del
+        // usuario y otro string con el apellido
+        // Cree e inicialice el resto de atributos a los valores que considere oportunos
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -49,6 +51,21 @@ public class UsuarioGenerico {
         this.portal = portal;
         Ncalle = ncalle;
         this.NMunicipio = NMunicipio;
+    }
+
+    public UsuarioGenerico(Long id, String nombre, String apellidos, Direccion dir) {
+        // Añadimos un segundo constructor para que se pueda introducir la direccion de
+        // manera directa o indirecta.
+
+        this.id = id;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.numero = dir.getNumero();
+        this.piso = dir.getPiso();
+        this.letra = dir.getLetra();
+        this.portal = dir.getPortal();
+        Ncalle = dir.getNcalle();
+        this.NMunicipio = dir.getNMunicipio();
     }
 
     public Long getId() {

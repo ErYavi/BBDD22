@@ -1,24 +1,27 @@
 import ormExpressCorreos.Controller;
 import ormExpressCorreos.model.UsuarioIdentificado;
 import ormExpressCorreos.model.Direccion;
-import ormExpressCorreos.model.UsuarioGenerico;
 import java.sql.SQLException;
 
 public class Main {
 
-    public static void main (String [] args) {
+    public static void main(String[] args) {
         try {
-            Controller controlador= new Controller();
+            Controller controlador = new Controller();
+            UsuarioIdentificado usuario = controlador.createUsuarioIdentificado("05264852F", "Juan", "Paredes Mira",
+                    "jotapm@gmail.com");
+            Direccion direccion = controlador.createDireccion(32, 1, "B", "N/A", "Calle de Guzman el Bueno", "Madrid");
 
-            // @TODO añada las llamadas a las funciones de la clase Controller.java necesarias
+            // @TODO añada las llamadas a las funciones de la clase Controller.java
+            // necesarias
             // para la creación del usuario identificado y la direccion.
 
-            if(usuarioIdentificado != null && direccion != null) {
+            if (usuario != null && direccion != null) {
                 System.out.println("Se ha creado el usuario identificado " + usuario.getNombre() + " con DNI "
                         + usuario.getDNI() + " que vive en " + direccion.getDireccionCompleta());
-            }
-
-        } catch(SQLException e) {
+            } else
+                throw new SQLException();
+        } catch (SQLException e) {
             System.err.println("Se ha producido un error en la conexión con la base de datos");
             e.printStackTrace();
         }
