@@ -17,40 +17,30 @@ public class UsuarioGenerico {
     @Column(name = "apellidos", nullable = false)
     private String apellidos;
 
-    @Column(name = "numero")
-    private Integer numero;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Direccion")
+    private Direccion direccion;
 
-    @Column(name = "piso")
-    private Integer piso;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Calle")
+    private Calle calle;
 
-    @Column(name = "letra")
-    private String letra;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Municipio")
+    private Municipio municipio;
 
-    @Column(name = "portal")
-    private String portal;
-
-    @Column(nullable = false)
-    private String Ncalle;
-
-    @Column(nullable = false)
-    private String NMunicipio;
-
-    // @TODO completar las anotaciones de todos los atributos
-    public UsuarioGenerico(Long id, String nombre, String apellidos, Integer numero, Integer piso, String letra,
-            String portal, String ncalle, String NMunicipio) { // @TODO: completar
+    public UsuarioGenerico(Long id, String nombre, String apellidos, Direccion direccion, Calle calle, Municipio municipio) {
         // @TODO completar el constructor de la clase.
         // Para ello es necesario un "long"" con la ID, un string con el nombre del
         // usuario y otro string con el apellido
         // Cree e inicialice el resto de atributos a los valores que considere oportunos
+
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.numero = numero;
-        this.piso = piso;
-        this.letra = letra;
-        this.portal = portal;
-        Ncalle = ncalle;
-        this.NMunicipio = NMunicipio;
+        this.direccion = direccion;
+        this.calle = calle;
+        this.municipio = municipio;
     }
 
     public UsuarioGenerico(Long id, String nombre, String apellidos, Direccion dir) {
@@ -60,12 +50,7 @@ public class UsuarioGenerico {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.numero = dir.getNumero();
-        this.piso = dir.getPiso();
-        this.letra = dir.getLetra();
-        this.portal = dir.getPortal();
-        Ncalle = dir.getNcalle();
-        this.NMunicipio = dir.getNMunicipio();
+        this.direccion=dir;
     }
 
     public Long getId() {
@@ -80,27 +65,15 @@ public class UsuarioGenerico {
         return this.apellidos;
     }
 
-    public Integer getNumero() {
-        return numero;
+    public Direccion getDireccion() {
+        return direccion;
     }
 
-    public Integer getPiso() {
-        return piso;
+    public Calle getCalle() {
+        return calle;
     }
 
-    public String getLetra() {
-        return letra;
-    }
-
-    public String getPortal() {
-        return portal;
-    }
-
-    public String getNcalle() {
-        return Ncalle;
-    }
-
-    public String getNMunicipio() {
-        return NMunicipio;
+    public Municipio getMunicipio() {
+        return municipio;
     }
 }

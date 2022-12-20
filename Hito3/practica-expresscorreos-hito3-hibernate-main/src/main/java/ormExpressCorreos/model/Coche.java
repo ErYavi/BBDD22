@@ -13,13 +13,14 @@ public class Coche {
     @Column (name = "Capacidad",nullable = false)
     private float capacidad;
 
-    @Column (name = "Cod_O",nullable = false)
-    private String Cod_O;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Oficina")
+    private Oficina oficina;
 
-    public Coche(String matricula, float capacidad, String cod_O) {
+    public Coche(String matricula, float capacidad, Oficina oficina) {
         this.matricula = matricula;
         this.capacidad = capacidad;
-        Cod_O = cod_O;
+        this.oficina = oficina;
     }
 
     public String getMatricula() {
@@ -30,7 +31,7 @@ public class Coche {
         return capacidad;
     }
 
-    public String getCod_O() {
-        return Cod_O;
+    public Oficina getOficina() {
+        return oficina;
     }
 }

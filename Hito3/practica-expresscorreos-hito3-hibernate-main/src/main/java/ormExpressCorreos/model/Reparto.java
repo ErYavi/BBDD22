@@ -14,40 +14,43 @@ public class Reparto {
     @Column (name = "FechaR",nullable = false)
     private Date FechaR;
 
-    @Column (name = "DNI_Cartero",nullable = false)
-    private String DNI_Cartero;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Cartero")
+    private Cartero cartero;
 
-    @Column (name = "Matricula",nullable = false)
-    private String Matricula;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Coche")
+    private Coche coche;
 
-    @Column (name = "ID_Ruta",nullable = false)
-    private String ID_Ruta;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Ruta")
+    private Ruta ruta;
 
-    public Reparto(String ID_Reparto, Date fechaR, String DNI_Cartero, String matricula, String ID_Ruta) {
+    public Reparto(String ID_Reparto, Date fechaR, Cartero cartero, Coche coche, Ruta ruta) {
         this.ID_Reparto = ID_Reparto;
         FechaR = fechaR;
-        this.DNI_Cartero = DNI_Cartero;
-        Matricula = matricula;
-        this.ID_Ruta = ID_Ruta;
-    }
-
-    public String getDNI_Cartero() {
-        return DNI_Cartero;
-    }
-
-    public Date getFechaR() {
-        return FechaR;
+        this.cartero = cartero;
+        this.coche = coche;
+        this.ruta = ruta;
     }
 
     public String getID_Reparto() {
         return ID_Reparto;
     }
 
-    public String getID_Ruta() {
-        return ID_Ruta;
+    public Date getFechaR() {
+        return FechaR;
     }
 
-    public String getMatricula() {
-        return Matricula;
+    public Cartero getCartero() {
+        return cartero;
+    }
+
+    public Coche getCoche() {
+        return coche;
+    }
+
+    public Ruta getRuta() {
+        return ruta;
     }
 }

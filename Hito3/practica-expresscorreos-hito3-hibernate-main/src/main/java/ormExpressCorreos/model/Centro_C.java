@@ -19,15 +19,16 @@ public class Centro_C {
     @Column(nullable = false)
     private Integer Max_pq;
 
-    @Column(nullable = false)
-    private String nMunicipio;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Municipio")
+    private Municipio municipio;
 
-    public Centro_C(String cod_CC, String nombreCC, Integer max_ct, Integer max_pq, String nMunicipio) {
+    public Centro_C(String cod_CC, String nombreCC, Integer max_ct, Integer max_pq, Municipio municipio) {
         Cod_CC = cod_CC;
         NombreCC = nombreCC;
         Max_ct = max_ct;
         Max_pq = max_pq;
-        this.nMunicipio = nMunicipio;
+        this.municipio = municipio;
     }
 
     public String getCod_CC() {
@@ -46,7 +47,7 @@ public class Centro_C {
         return Max_pq;
     }
 
-    public String getnMunicipio() {
-        return nMunicipio;
+    public Municipio getMunicipio() {
+        return municipio;
     }
 }

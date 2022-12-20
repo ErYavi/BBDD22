@@ -10,27 +10,29 @@ public class Oficina {
     @Column (name = "Cod_0",nullable = false)
     private String Cod_O;
 
-    @Column (name = "nMunicipio",nullable = false)
-    private String nMunicipio;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Municipio")
+    private Municipio municipio;
 
-    @Column (name = "Cod_CC",nullable = false)
-    private String Cod_CC;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Centro_C")
+    private Centro_C centro_c;
 
-    public Oficina(String cod_O, String nMunicipio, String cod_CC) {
+    public Oficina(String cod_O, Municipio municipio, Centro_C centro_c) {
         Cod_O = cod_O;
-        this.nMunicipio = nMunicipio;
-        Cod_CC = cod_CC;
+        this.municipio = municipio;
+        this.centro_c = centro_c;
     }
 
     public String getCod_O() {
         return Cod_O;
     }
 
-    public String getnMunicipio() {
-        return nMunicipio;
+    public Municipio getMunicipio() {
+        return municipio;
     }
 
-    public String getCod_CC() {
-        return Cod_CC;
+    public Centro_C getCentro_c() {
+        return centro_c;
     }
 }

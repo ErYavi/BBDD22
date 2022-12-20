@@ -16,18 +16,20 @@ public class Segmento {
     @Column(nullable = false)
     private String Id_Seg;
 
-    @Column(nullable = false)
-    private String nMunicipio;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Municipio")
+    private Municipio municipio;
 
-    @Column(nullable = false)
-    private String nCalle;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Calle")
+    private Calle calle;
 
-    public Segmento(Integer n_ini, Integer n_fin, String id_Seg, String nMunicipio, String nCalle) {
+    public Segmento(Integer n_ini, Integer n_fin, String id_Seg, Municipio municipio, Calle calle) {
         N_ini = n_ini;
         N_fin = n_fin;
         Id_Seg = id_Seg;
-        this.nMunicipio = nMunicipio;
-        this.nCalle = nCalle;
+        this.municipio = municipio;
+        this.calle = calle;
     }
 
     public Integer getN_ini() {
@@ -42,11 +44,11 @@ public class Segmento {
         return Id_Seg;
     }
 
-    public String getnMunicipio() {
-        return nMunicipio;
+    public Municipio getMunicipio() {
+        return municipio;
     }
 
-    public String getnCalle() {
-        return nCalle;
+    public Calle getCalle() {
+        return calle;
     }
 }

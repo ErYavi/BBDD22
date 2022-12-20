@@ -10,19 +10,20 @@ public class Municipio {
      @Column(nullable = false)
     private String nMunicipio;
 
-    @Column(nullable = false)
-    private String nProvincia;
+    @ManyToOne
+    @JoinColumn(name = "Provincia")
+    private Provincia provincia;
 
-    public Municipio(String nMunicipio, String nProvincia) {
+    public Municipio(String nMunicipio, Provincia provincia) {
         this.nMunicipio = nMunicipio;
-        this.nProvincia = nProvincia;
+        this.provincia = provincia;
     }
 
     public String getnMunicipio() {
         return nMunicipio;
     }
 
-    public String getnProvincia() {
-        return nProvincia;
+    public Provincia getProvincia() {
+        return provincia;
     }
 }

@@ -13,21 +13,23 @@ public class Ruta_Incluye_Seg {
     @Column(nullable = false)
     private String Id_Seg;
 
-    @Column(nullable = false)
-    private String nMunicipio;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Municipio")
+    private Municipio municipio;
 
-    @Column(nullable = false)
-    private String nCalle;
+    @ManyToMany
+    @JoinColumn(name = "Calle")
+    private Calle calle;
 
     @Id
     @Column(nullable = false)
     private String Id_Ruta;
 
-    public Ruta_Incluye_Seg(Integer norden, String id_Seg, String nMunicipio, String nCalle, String id_Ruta) {
+    public Ruta_Incluye_Seg(Integer norden, String id_Seg, Municipio municipio, Calle calle, String id_Ruta) {
         Norden = norden;
         Id_Seg = id_Seg;
-        this.nMunicipio = nMunicipio;
-        this.nCalle = nCalle;
+        this.municipio = municipio;
+        this.calle = calle;
         Id_Ruta = id_Ruta;
     }
 
@@ -39,12 +41,12 @@ public class Ruta_Incluye_Seg {
         return Id_Seg;
     }
 
-    public String getnMunicipio() {
-        return nMunicipio;
+    public Municipio getMunicipio() {
+        return municipio;
     }
 
-    public String getnCalle() {
-        return nCalle;
+    public Calle getCalle() {
+        return calle;
     }
 
     public String getId_Ruta() {
