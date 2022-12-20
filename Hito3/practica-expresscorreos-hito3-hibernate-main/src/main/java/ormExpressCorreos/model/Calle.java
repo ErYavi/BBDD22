@@ -10,20 +10,20 @@ public class Calle {
      @Column (nullable = false)
      private String Ncalle;
 
-     @Id
-     @Column(nullable = false)
-     private String NMunicipio;
+     @ManyToOne
+     @JoinColumn(name = "Municipio")
+     private Municipio municipio;
 
-     public Calle(String ncalle, String NMunicipio) {
+     public Calle(String ncalle, Municipio municipio) {
          Ncalle = ncalle;
-         this.NMunicipio = NMunicipio;
+         this.municipio = municipio;
      }
 
      public String getNcalle() {
          return Ncalle;
      }
 
-     public String getNMunicipio() {
-         return NMunicipio;
+     public Municipio getMunicipio() {
+         return municipio;
      }
  }
