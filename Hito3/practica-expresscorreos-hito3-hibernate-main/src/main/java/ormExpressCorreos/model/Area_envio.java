@@ -10,19 +10,20 @@ public class Area_envio {
     @Column (name = "Id_area",nullable = false)
     private String Id_Area;
 
-    @Column (name = "Cod_O",nullable = false)
-    private String Cod_O;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Oficina")
+    private Oficina oficina;
 
-    public Area_envio(String id_Area, String cod_O) {
+    public Area_envio(String id_Area, Oficina oficina) {
         Id_Area = id_Area;
-        Cod_O = cod_O;
+        this.oficina = oficina;
     }
 
     public String getId_Area() {
         return Id_Area;
     }
 
-    public String getCod_O() {
-        return Cod_O;
+    public Oficina getOficina() {
+        return oficina;
     }
 }
