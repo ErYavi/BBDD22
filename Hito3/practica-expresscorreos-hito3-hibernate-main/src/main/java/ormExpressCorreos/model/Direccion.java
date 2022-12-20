@@ -2,7 +2,6 @@ package ormExpressCorreos.model;
 
 import javax.persistence.*;
 
-
 // @TODO completar las anotaciones de la clase
 @Entity
 @Table(name = "Direccion")
@@ -26,21 +25,22 @@ public class Direccion {
 
     @Id
     @Column(nullable = false)
-    private  String NMunicipio;
+    private Municipio NMunicipio;
 
     // @TODO completar las anotaciones de todos los atributos
 
-    public Direccion(Integer numero, Integer piso, String letra, String portal,String Ncalle,String NMunicipio) {  // @TODO: completar
+    public Direccion(Integer numero, Integer piso, String letra, String portal, String Ncalle, Municipio municipio) { // @TODO:
+                                                                                                                      // completar
         // @TODO completar el constructor de la clase.
-        //  Para ello son necesarios dos enteros con el número y el piso, y dos strings
+        // Para ello son necesarios dos enteros con el número y el piso, y dos strings
         // con la letra y el portal
-        //  Cree e inicialice el resto de atributos a los valores que considere oportunos
+        // Cree e inicialice el resto de atributos a los valores que considere oportunos
         this.letra = letra;
         this.numero = numero;
         this.piso = piso;
         this.portal = portal;
-        this.Ncalle=Ncalle;
-        this.NMunicipio=NMunicipio;
+        this.Ncalle = Ncalle;
+        this.NMunicipio = municipio;
     }
 
     public Integer getNumero() {
@@ -63,7 +63,7 @@ public class Direccion {
         return Ncalle;
     }
 
-    public String getNMunicipio() {
+    public Municipio getNMunicipio() {
         return NMunicipio;
     }
 

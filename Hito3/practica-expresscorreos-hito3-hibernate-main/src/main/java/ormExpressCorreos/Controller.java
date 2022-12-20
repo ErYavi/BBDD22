@@ -1,15 +1,12 @@
 package ormExpressCorreos;
 
-import ormExpressCorreos.model.Direccion;
-import ormExpressCorreos.model.UsuarioGenerico;
-import ormExpressCorreos.model.UsuarioIdentificado;
+import ormExpressCorreos.model.*;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-
 import java.sql.*;
 
 /**
@@ -48,12 +45,11 @@ public class Controller {
          */
         public UsuarioGenerico createUsuarioGenerico(Long id, String nombre, String apellidos, Direccion dir)
                         throws SQLException {
-                // @TODO completa este metodo para crear de forma presistente un usuario
-                // genérico
-                UsuarioGenerico usuario = new UsuarioGenerico(id, nombre, apellidos, dir.getNumero(), dir.getPiso(),
-                                dir.getLetra(), dir.getPortal(), dir.getNcalle(), dir.getNMunicipio());
+                UsuarioGenerico usuario = new UsuarioGenerico(id, nombre, apellidos, dir);
+                session.beginTransaction();
+                session.saveOrUpdate(usuario);
+                session.getTransaction().commit();
                 return usuario;
-
         }
 
         public UsuarioIdentificado createUsuarioIdentificado(String DNI, String nombre, String apellidos, String email)
@@ -61,14 +57,28 @@ public class Controller {
                 // @TODO completa este metodo para crear de forma presistente un usuario
                 // identificado
                 UsuarioIdentificado usuario = new UsuarioIdentificado(DNI, nombre, apellidos, email);
+                session.beginTransaction();
+                session.saveOrUpdate(usuario);
+                session.getTransaction().commit();
                 return usuario;
         }
 
-        public Direccion createDireccion(Integer numero, Integer piso, String letra, String portal, String Ncalle,
-                        String NMunicipio)
-                        throws SQLException {
-                // @TODO completa este metodo para crear de forma presistente una direccion
-                Direccion direccion = new Direccion(numero, piso, letra, portal, Ncalle, NMunicipio);
-                return direccion;
+        public UsuarioIdentificado createDireccion(Integer numero, Integer piso, String letra, String portal,
+                        String calle, String municipio,
+                        String provincia, UsuarioIdentificado user) throws SQLException {
+                Provincia prov = new Provincia(provincia);
+                Municipio mun = new Municipio(municipio, prov);
+                Calle objCalle = new Calle(calle, mun);
+                Direccion dir = new Direccion(numero, piso, letra, portal, calle, mun);
+                Iden_Vive_Dir vive = new Iden_Vive_Dir(dir, user);
+                session.beginTransaction();
+                session.saveOrUpdate(mun);
+                session.saveOrUpdate(objCalle);
+                session.saveOrUpdate(dir);
+                session.saveOrUpdate(user);
+                session.saveOrUpdate(vive);
+                session.getTransaction().commit();
+                return user;
         }
+
 }

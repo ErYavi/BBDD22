@@ -26,10 +26,11 @@ public class UsuarioIdentificado {
     @Column(name = "email", nullable = false)
     private String email;
 
-    public UsuarioIdentificado(String DNI, String nombre, String apellidos, String email) {  // @TODO: completar
+    public UsuarioIdentificado(String DNI, String nombre, String apellidos, String email) { // @TODO: completar
         // @TODO completar el constructor de la clase.
-        //  Para ello son necesarios strings con el DNI, el nombre, los apellidos y el email del usuario
-        //  Cree e inicialice el resto de atributos a los valores que considere oportunos
+        // Para ello son necesarios strings con el DNI, el nombre, los apellidos y el
+        // email del usuario
+        // Cree e inicialice el resto de atributos a los valores que considere oportunos
         this.apellidos = apellidos;
         this.DNI = DNI;
         this.nombre = nombre;
@@ -50,5 +51,21 @@ public class UsuarioIdentificado {
 
     public String getEmail() {
         return this.email;
+    }
+
+    public void setDNI(String dni) {
+        this.DNI = dni;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
