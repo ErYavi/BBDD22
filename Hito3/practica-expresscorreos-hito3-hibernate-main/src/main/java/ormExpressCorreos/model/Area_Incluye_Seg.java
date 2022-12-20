@@ -15,17 +15,19 @@ public class Area_Incluye_Seg {
     @Column (name = "ID_seg",nullable = false)
     private String ID_Seg;
 
-    @Column (name = "nMunicipio",nullable = false)
-    private  String nMunicipio;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Municipio")
+    private Municipio municipio;
 
-    @Column (name = "nCalle",nullable = false)
-    private String nCalle;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Calle")
+    private Calle calle;
 
-    public Area_Incluye_Seg(String ID_Area, String ID_Seg, String nMunicipio, String nCalle) {
+    public Area_Incluye_Seg(String ID_Area, String ID_Seg, Municipio municipio, Calle calle) {
         this.ID_Area = ID_Area;
         this.ID_Seg = ID_Seg;
-        this.nMunicipio = nMunicipio;
-        this.nCalle = nCalle;
+        this.municipio = municipio;
+        this.calle = calle;
     }
 
     public String getID_Area() {
@@ -36,11 +38,11 @@ public class Area_Incluye_Seg {
         return ID_Seg;
     }
 
-    public String getnMunicipio() {
-        return nMunicipio;
+    public Municipio getMunicipio() {
+        return municipio;
     }
 
-    public String getnCalle() {
-        return nCalle;
+    public Calle getCalle() {
+        return calle;
     }
 }
