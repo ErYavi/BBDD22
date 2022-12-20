@@ -10,20 +10,20 @@ public class Cartero_Reparte_Area {
     @Column (name = "Id_Area",nullable = false)
     private String Id_Area;
 
-    @Id
-    @Column (name = "DNI_Car",nullable = false)
-    private String DNI_Car;
+    @ManyToMany
+    @JoinColumn(name = "Cartero")
+    private Cartero cartero;
 
-    public Cartero_Reparte_Area(String id_Area, String DNI_Car) {
+    public Cartero_Reparte_Area(String id_Area, Cartero cartero) {
         Id_Area = id_Area;
-        this.DNI_Car = DNI_Car;
+        this.cartero = cartero;
     }
 
     public String getId_Area() {
         return Id_Area;
     }
 
-    public String getDNI_Car() {
-        return DNI_Car;
+    public Cartero getCartero() {
+        return cartero;
     }
 }
