@@ -2,10 +2,7 @@ package ormExpressCorreos.model;
 
 // @TODO completar las anotaciones de la clase
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "UsuarioIden")
@@ -26,7 +23,11 @@ public class UsuarioIdentificado {
     @Column(name = "email", nullable = false)
     private String email;
 
-    public UsuarioIdentificado(String DNI, String nombre, String apellidos, String email) { // @TODO: completar
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Direccion")
+    private Iden_Vive_Dir iden_vive_dir;
+
+    public UsuarioIdentificado(String DNI, String nombre, String apellidos, String email,Iden_Vive_Dir iden_vive_dir) { // @TODO: completar
         // @TODO completar el constructor de la clase.
         // Para ello son necesarios strings con el DNI, el nombre, los apellidos y el
         // email del usuario
@@ -35,6 +36,7 @@ public class UsuarioIdentificado {
         this.DNI = DNI;
         this.nombre = nombre;
         this.email = email;
+        this.iden_vive_dir=iden_vive_dir;
     }
 
     public String getDNI() {
@@ -67,5 +69,9 @@ public class UsuarioIdentificado {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Iden_Vive_Dir getIden_vive_dir() {
+        return iden_vive_dir;
     }
 }

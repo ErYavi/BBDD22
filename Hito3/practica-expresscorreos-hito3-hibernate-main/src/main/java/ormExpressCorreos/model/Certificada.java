@@ -19,19 +19,20 @@ public class Certificada {
     @Column(name = "Urgencia", nullable = false)
     private Integer urgencia;
 
-    @Column(name = "DNI_Cartero", nullable = false)
-    private String DNI_Cartero;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Cartero")
+    private Cartero cartero;
 
     @Column(name = "Id_Reparto", nullable = false)
     private String Id_Reparto;
 
-    public Certificada(String DNI_emisor,String DNI_Cartero,String DNI_receptor, Integer urgencia, String Id_Reparto, String CE){
-        this.DNI_emisor=DNI_emisor;
-        this.DNI_Cartero=DNI_Cartero;
-        this.DNI_receptor=DNI_receptor;
-        this.urgencia=urgencia;
-        this.Id_Reparto=Id_Reparto;
-        this.CE=CE;
+    public Certificada(String DNI_emisor, String DNI_receptor, String CE, Integer urgencia, Cartero cartero, String id_Reparto) {
+        this.DNI_emisor = DNI_emisor;
+        this.DNI_receptor = DNI_receptor;
+        this.CE = CE;
+        this.urgencia = urgencia;
+        this.cartero = cartero;
+        Id_Reparto = id_Reparto;
     }
 
     public Integer getUrgencia() {
@@ -42,8 +43,8 @@ public class Certificada {
         return CE;
     }
 
-    public String getDNI_Cartero() {
-        return DNI_Cartero;
+    public Cartero getCartero() {
+        return cartero;
     }
 
     public String getDNI_emisor() {

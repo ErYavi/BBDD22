@@ -10,8 +10,9 @@ public class Paquete {
     @Column (name = "PQ",nullable = false)
     private String PQ;
 
-    @Column (name = "Id_Rec")
-    private String Id_Recogida;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Recogida")
+    private Recogida recogida;
 
     @Column (name = "Id_emisor",nullable = false)
     private Integer Id_Emisor;
@@ -19,40 +20,37 @@ public class Paquete {
     @Column (name = "Id_Receptor",nullable = false)
     private Integer Id_Receptor;
 
-    @Column (name = "DNI_Car",nullable = false)
-    private String DNI_Car;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Cartero")
+    private Cartero cartero;
 
     @Column (name = "Dimensiones",nullable = false)
     private String Dimensiones;
 
-    @Column (name = "Id_Reparto")
-    private String ID_Reparto;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Reparto")
+    private Reparto reparto;
 
     @Column (name = "peso")
     private float peso;
 
-    public Paquete(String PQ, String id_Recogida, Integer id_Emisor, Integer id_Receptor, String DNI_Car, String dimensiones, String ID_Reparto, float peso) {
+    public Paquete(String PQ, Recogida recogida, Integer id_Emisor, Integer id_Receptor, Cartero cartero, String dimensiones, Reparto reparto, float peso) {
         this.PQ = PQ;
-        Id_Recogida = id_Recogida;
+        this.recogida = recogida;
         Id_Emisor = id_Emisor;
         Id_Receptor = id_Receptor;
-        this.DNI_Car = DNI_Car;
+        this.cartero = cartero;
         Dimensiones = dimensiones;
-        this.ID_Reparto = ID_Reparto;
+        this.reparto = reparto;
         this.peso = peso;
     }
 
-    public String getID_Reparto() {
-        return ID_Reparto;
-    }
 
     public String getPQ() {
         return PQ;
     }
 
-    public String getId_Recogida() {
-        return Id_Recogida;
-    }
+
 
     public Integer getId_Emisor() {
         return Id_Emisor;
@@ -62,8 +60,16 @@ public class Paquete {
         return Id_Receptor;
     }
 
-    public String getDNI_Car() {
-        return DNI_Car;
+    public Recogida getRecogida() {
+        return recogida;
+    }
+
+    public Cartero getCartero() {
+        return cartero;
+    }
+
+    public Reparto getReparto() {
+        return reparto;
     }
 
     public String getDimensiones() {

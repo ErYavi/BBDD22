@@ -13,8 +13,9 @@ public class Entrega_Cert {
     private String DNI_Usuario;
 
     @Id
-    @Column (name = "DNI_Car",nullable = false)
-    private String DNI_Car;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Cartero")
+    private Cartero cartero;
 
     @Id
     @Column (name = "CE",nullable = false)
@@ -26,9 +27,9 @@ public class Entrega_Cert {
     @Column (name = "hora",nullable = false)
     private Time hora;
 
-    public Entrega_Cert(String DNI_Usuario, String DNI_Car, String CE, Date fecha, Time hora) {
+    public Entrega_Cert(String DNI_Usuario, Cartero cartero, String CE, Date fecha, Time hora) {
         this.DNI_Usuario = DNI_Usuario;
-        this.DNI_Car = DNI_Car;
+        this.cartero = cartero;
         this.CE = CE;
         this.fecha = fecha;
         this.hora = hora;
@@ -38,8 +39,8 @@ public class Entrega_Cert {
         return DNI_Usuario;
     }
 
-    public String getDNI_Car() {
-        return DNI_Car;
+    public Cartero getCartero() {
+        return cartero;
     }
 
     public String getCE() {

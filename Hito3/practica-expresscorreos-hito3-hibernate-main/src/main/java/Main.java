@@ -13,7 +13,7 @@ public class Main {
             UsuarioIdentificado usuarioIdentificado = controlador.createDireccion(32, 1, "B", "N/A",
                     "Calle de Guzman el Bueno",
                     "Madrid", "Madrid", usuario);
-            Direccion direccion = UsuarioIdentificado.getDireccion();
+            Direccion direccion = usuario.getIden_vive_dir().getDireccion();
             // @TODO añada las llamadas a las funciones de la clase Controller.java
             // necesarias
             // para la creación del usuario identificado y la direccion.

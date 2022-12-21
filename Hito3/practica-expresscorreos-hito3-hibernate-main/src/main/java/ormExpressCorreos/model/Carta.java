@@ -16,26 +16,32 @@ public class Carta {
     @Column (name = "Id_Receptor",nullable = false)
     private String ID_Receptor;
 
-    @Column (name = "DNI_Car",nullable = false)
-    private String DNI_Cartero;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Cartero")
+    private Cartero cartero;
 
     @Column (name = "Formato",nullable = false)
     private String Formato;
 
-    @Column (name = "Id_Reparto",nullable = false)
-    private String Id_Reparto;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Reparto")
+    private Reparto reparto;
 
-    public Carta(Integer CT, Integer ID_Emisor, String ID_Receptor, String DNI_Cartero, String formato,String Id_Reparto) {
+    public Carta(Integer CT, Integer ID_Emisor, String ID_Receptor, Cartero cartero, String formato, Reparto reparto) {
         this.CT = CT;
         this.ID_Emisor = ID_Emisor;
         this.ID_Receptor = ID_Receptor;
-        this.DNI_Cartero = DNI_Cartero;
+        this.cartero = cartero;
         Formato = formato;
-        this.Id_Reparto=Id_Reparto;
+        this.reparto = reparto;
     }
 
-    public String getDNI_Cartero() {
-        return DNI_Cartero;
+    public Cartero getCartero() {
+        return cartero;
+    }
+
+    public Reparto getReparto() {
+        return reparto;
     }
 
     public Integer getCT() {
@@ -54,7 +60,5 @@ public class Carta {
         return ID_Receptor;
     }
 
-    public String getId_Reparto() {
-        return Id_Reparto;
-    }
+
 }

@@ -2,6 +2,7 @@ package ormExpressCorreos.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Calendar;
 
 @Entity
 @Table(name = "Recogida")
@@ -14,42 +15,34 @@ public class Recogida {
     @Column(name = "FechaRec", nullable = false)
     private Date FechaRec;
 
-    @Column(name = "DNI_Car", nullable = false)
-    private String DNI_Cartero;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Cartero")
+    private Cartero cartero;
 
     @Column(name = "DNI_Usuario", nullable = false)
     private String DNI_Usuario;
 
-    @Column(name = "Direccion")
-    private Integer numero;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Direccion")
+    private Direccion direccion;
 
-    @Column(name = "piso", nullable = false)
-    private Integer piso;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Municipio")
+    private Municipio municipio;
 
-    @Column(name = "letra", nullable = false)
-    private String letra;
-
-    @Column(name = "portal", nullable = false)
-    private String portal;
-
-    @Column(name = "nMunicipio", nullable = false)
-    private String nMunicipio;
-
-    @Column(name = "nCalle", nullable = false)
-    private String nCalle;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Calle")
+    private Calle calle;
 
 
-    public Recogida(String id_Recogida, Date fechaRec, String DNI_Cartero, String DNI_Usuario, Integer numero, Integer piso, String letra, String portal, String nMunicipio, String nCalle) {
+    public Recogida(String id_Recogida, Date fechaRec, Cartero cartero, String DNI_Usuario, Direccion direccion, Municipio municipio, Calle calle) {
         Id_Recogida = id_Recogida;
         FechaRec = fechaRec;
-        this.DNI_Cartero = DNI_Cartero;
+        this.cartero = cartero;
         this.DNI_Usuario = DNI_Usuario;
-        this.numero = numero;
-        this.piso = piso;
-        this.letra = letra;
-        this.portal = portal;
-        this.nMunicipio = nMunicipio;
-        this.nCalle = nCalle;
+        this.direccion = direccion;
+        this.municipio = municipio;
+        this.calle = calle;
     }
 
     public String getId_Recogida() {
@@ -60,35 +53,24 @@ public class Recogida {
         return FechaRec;
     }
 
-    public String getDNI_Cartero() {
-        return DNI_Cartero;
-    }
 
     public String getDNI_Usuario() {
         return DNI_Usuario;
     }
 
-    public Integer getNumero() {
-        return numero;
+    public Cartero getCartero() {
+        return cartero;
     }
 
-    public Integer getPiso() {
-        return piso;
+    public Direccion getDireccion() {
+        return direccion;
     }
 
-    public String getLetra() {
-        return letra;
+    public Municipio getMunicipio() {
+        return municipio;
     }
 
-    public String getPortal() {
-        return portal;
-    }
-
-    public String getnMunicipio() {
-        return nMunicipio;
-    }
-
-    public String getnCalle() {
-        return nCalle;
+    public Calle getCalle() {
+        return calle;
     }
 }

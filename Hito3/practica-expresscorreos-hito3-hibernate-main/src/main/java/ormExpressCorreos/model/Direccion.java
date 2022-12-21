@@ -20,16 +20,18 @@ public class Direccion {
     private String portal;
 
     @Id
-    @Column(nullable = false)
-    private String Ncalle;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Calle")
+    private Calle calle;
 
     @Id
-    @Column(nullable = false)
-    private Municipio NMunicipio;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Municipio")
+    private Municipio municipio;
 
     // @TODO completar las anotaciones de todos los atributos
 
-    public Direccion(Integer numero, Integer piso, String letra, String portal, String Ncalle, Municipio municipio) { // @TODO:
+    public Direccion(Integer numero, Integer piso, String letra, String portal, Calle calle, Municipio municipio) { // @TODO:
                                                                                                                       // completar
         // @TODO completar el constructor de la clase.
         // Para ello son necesarios dos enteros con el número y el piso, y dos strings
@@ -39,8 +41,8 @@ public class Direccion {
         this.numero = numero;
         this.piso = piso;
         this.portal = portal;
-        this.Ncalle = Ncalle;
-        this.NMunicipio = municipio;
+        this.calle = calle;
+        this.municipio = municipio;
     }
 
     public Integer getNumero() {
@@ -59,12 +61,12 @@ public class Direccion {
         return this.portal;
     }
 
-    public String getNcalle() {
-        return Ncalle;
+    public Calle getCalle() {
+        return calle;
     }
 
-    public Municipio getNMunicipio() {
-        return NMunicipio;
+    public Municipio getMunicipio() {
+        return municipio;
     }
 
     public String getDireccionCompleta() {

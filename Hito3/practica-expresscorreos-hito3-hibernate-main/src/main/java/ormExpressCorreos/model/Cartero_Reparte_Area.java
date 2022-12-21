@@ -7,20 +7,21 @@ import javax.persistence.*;
 public class Cartero_Reparte_Area {
 
     @Id
-    @Column (name = "Id_Area",nullable = false)
-    private String Id_Area;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Area")
+    private Area_envio area_envio;
 
     @ManyToMany
     @JoinColumn(name = "Cartero")
     private Cartero cartero;
 
-    public Cartero_Reparte_Area(String id_Area, Cartero cartero) {
-        Id_Area = id_Area;
+    public Cartero_Reparte_Area(Area_envio area_envio, Cartero cartero) {
+        this.area_envio = area_envio;
         this.cartero = cartero;
     }
 
-    public String getId_Area() {
-        return Id_Area;
+    public Area_envio getArea_envio() {
+        return area_envio;
     }
 
     public Cartero getCartero() {

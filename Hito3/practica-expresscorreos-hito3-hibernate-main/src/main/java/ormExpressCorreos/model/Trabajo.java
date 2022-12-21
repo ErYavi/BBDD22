@@ -15,18 +15,20 @@ public class Trabajo {
     private String jornada;
 
     @Id
-    @Column (name = "Cod:O",nullable = false)
-    private String Cod_O;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Oficina")
+    private Oficina oficina;
 
     @Id
-    @Column (name = "DNI_Car",nullable = false)
-    private String DNI_Car;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Cartero")
+    private Cartero cartero;
 
-    public Trabajo(Date fecha_ini, String jornada, String cod_O, String DNI_Car) {
+    public Trabajo(Date fecha_ini, String jornada, Oficina oficina, Cartero cartero) {
         Fecha_ini = fecha_ini;
         this.jornada = jornada;
-        Cod_O = cod_O;
-        this.DNI_Car = DNI_Car;
+        this.oficina = oficina;
+        this.cartero = cartero;
     }
 
     public Date getFecha_ini() {
@@ -37,11 +39,11 @@ public class Trabajo {
         return jornada;
     }
 
-    public String getCod_O() {
-        return Cod_O;
+    public Oficina getOficina() {
+        return oficina;
     }
 
-    public String getDNI_Car() {
-        return DNI_Car;
+    public Cartero getCartero() {
+        return cartero;
     }
 }

@@ -11,9 +11,9 @@ public class Area_Incluye_Seg {
     @Column (name = "ID_Area",nullable = false)
     private String ID_Area;
 
-    @Id
-    @Column (name = "ID_seg",nullable = false)
-    private String ID_Seg;
+    @ManyToOne(optional = false)
+    @JoinColumn (name = "Segmento")
+    private Segmento segmento;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "Municipio")
@@ -23,9 +23,9 @@ public class Area_Incluye_Seg {
     @JoinColumn(name = "Calle")
     private Calle calle;
 
-    public Area_Incluye_Seg(String ID_Area, String ID_Seg, Municipio municipio, Calle calle) {
+    public Area_Incluye_Seg(String ID_Area, Segmento segmento, Municipio municipio, Calle calle) {
         this.ID_Area = ID_Area;
-        this.ID_Seg = ID_Seg;
+        this.segmento = segmento;
         this.municipio = municipio;
         this.calle = calle;
     }
@@ -34,8 +34,8 @@ public class Area_Incluye_Seg {
         return ID_Area;
     }
 
-    public String getID_Seg() {
-        return ID_Seg;
+    public Segmento getSegmento() {
+        return segmento;
     }
 
     public Municipio getMunicipio() {
