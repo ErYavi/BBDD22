@@ -1,3 +1,4 @@
+USE Correos;
 INSERT INTO Cartero (DNI_Car, Nom_C, Apellidos_C) VALUES
 ('01542462N','Carlos','Castillo Romero'),
 ('54156156I','Paco','Montes'),
@@ -39,7 +40,8 @@ INSERT INTO Calle (Ncalle,Nmunicipio) VALUES
 ('Calle Mayor', 'Madrid'),
 ('Paseo de San Roque', 'Alcorcon'),
 ('Avenida de America','Alcorcon'),
-('Avenida de America','Madrid');
+('Avenida de America','Madrid'),
+('Alcala','Madrid');
 
 INSERT INTO Direccion (Numero, Piso, Letra, Portal, NCalle, NMunicipio) VALUES # NA significa que NO APLICA.
 ('3','1','D','F','Paseo de Europa', 'Alcobendas'),
@@ -71,7 +73,8 @@ INSERT INTO Segmento (N_ini, N_fin, ID_Seg, NCalle, NMunicipio) VALUES
 (1,20,'SE-ALC-11','Avenida de America', 'Alcorcon'),
 (21,50,'SE-ALC-12','Avenida de America', 'Alcorcon'),
 (1,20,'SE-MAD-03','Avenida de America', 'Madrid'),
-(21,60,'SE-MAD-04','Avenida de America', 'Madrid');
+(21,60,'SE-MAD-04','Avenida de America', 'Madrid'),
+(1,50,'SE-MAD-05','Alcala', 'Madrid');
 
 INSERT INTO Usuario_Gen(Id_Gen,Nom_Gen,Apellidos_Gen,Numero,Piso,Letra,Portal,Ncalle,Nmunicipio) VALUES
 (1,'Juan','Illo','3','1','D','F','Paseo de Europa', 'Alcobendas'),
@@ -143,7 +146,8 @@ INSERT INTO Area_Incluye_Seg(ID_area,Id_seg) VALUES
 ('AR-MAD-04','SE-MAD-04'),
 ('AR-ALC-01','SE-ALC-04'),
 ('AR-ACB-02','SE-ACB-04'),
-('AR-ACB-01','SE-ACB-05');
+('AR-ACB-01','SE-ACB-05'),
+('AR-MAD-04','SE-MAD-05');
 
 INSERT INTO Area_Incluye_Area(Id_Padre,ID_hijo) VALUES
 ('AR-MAD-01','AR-MAD-02');
