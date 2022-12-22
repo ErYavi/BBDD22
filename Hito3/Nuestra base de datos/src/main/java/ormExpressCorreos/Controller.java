@@ -50,7 +50,7 @@ public class Controller {
                         throws SQLException {
                 // @TODO completa este metodo para crear de forma presistente un usuario
                 // genérico
-                UsuarioGenerico usuario = new UsuarioGenerico(id,nombre,apellidos,dir);
+                UsuarioGenerico usuario = new UsuarioGenerico(id, nombre, apellidos, dir);
                 session.beginTransaction();
                 session.saveOrUpdate(usuario);
                 session.getTransaction().commit();
@@ -69,37 +69,38 @@ public class Controller {
                 return usuario;
         }
 
-        public Municipio createMunicipio(String nombre){
-                Municipio municipio=new Municipio(nombre);
+        public Municipio createMunicipio(String nombre) {
+                Municipio municipio = new Municipio(nombre);
                 session.beginTransaction();
                 session.saveOrUpdate(municipio);
                 session.getTransaction().commit();
                 return municipio;
         }
 
-        public Calle createCalle(String nombre, Municipio municipio) throws SQLException{
-                Calle calle= new Calle(nombre,municipio);
+        public Calle createCalle(String nombre, Municipio municipio) throws SQLException {
+                Calle calle = new Calle(nombre, municipio);
                 session.beginTransaction();
                 session.saveOrUpdate(calle);
                 session.getTransaction().commit();
                 return calle;
         }
 
-        public Direccion createDireccion(Integer numero, Integer piso, String letra, String portal,Calle calle)
+        public Direccion createDireccion(Integer numero, Integer piso, String letra, String portal, Calle calle)
                         throws SQLException {
                 // @TODO completa este metodo para crear de forma presistente una direccion
-                Direccion direccion = new Direccion(numero,piso,letra,portal,calle);
+                Direccion direccion = new Direccion(numero, piso, letra, portal, calle);
                 session.beginTransaction();
                 session.saveOrUpdate(calle);
                 session.getTransaction().commit();
                 return direccion;
         }
 
-        public UsuarioIdentificado addDireccionUsuario(Direccion direccion, UsuarioIdentificado usuarioIdentificado) throws SQLException {
+        public UsuarioIdentificado addDireccionUsuario(Direccion direccion, UsuarioIdentificado usuarioIdentificado)
+                        throws SQLException {
                 usuarioIdentificado.getDireccionIden().add(direccion);
                 session.beginTransaction();
                 session.saveOrUpdate(usuarioIdentificado);
                 session.getTransaction().commit();
-                return  usuarioIdentificado;
+                return usuarioIdentificado;
         }
 }
