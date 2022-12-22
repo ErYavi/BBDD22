@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+        <!--Termine de completar la configuración con la base de datos-->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306:correosh</property>
+        <property name="connection.username">root</property>
+
+
+        <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+
+        <property name="connection.pool_size">10</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="show_sql">false</property>
+
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <mapping class="ormExpressCorreos.model.UsuarioGenerico"/>
+        <mapping class="ormExpressCorreos.model.UsuarioIdentificado"/>
+        <mapping class="ormExpressCorreos.model.Municipio"/>
+        <mapping class="ormExpressCorreos.model.Calle"/>
+        <mapping class="ormExpressCorreos.model.Direccion"/>
+        <mapping class="ormExpressCorreos.model.Area_envio"/>
+        <mapping class="ormExpressCorreos.model.Ruta"/>
+        <mapping class="ormExpressCorreos.model.Centro_C"/>
+        <mapping class="ormExpressCorreos.model.Oficina"/>
+        <mapping class="ormExpressCorreos.model.Reparto"/>
+        <mapping class="ormExpressCorreos.model.Cartero"/>
+        <mapping class="ormExpressCorreos.model.Recogida"/>
+        <mapping class="ormExpressCorreos.model.Turno"/>
+        <mapping class="ormExpressCorreos.model.Carta"/>
+        <mapping class="ormExpressCorreos.model.Certificada"/>
+        <mapping class="ormExpressCorreos.model.Coche"/>
+        <mapping class="ormExpressCorreos.model.Paquete"/>
+        <mapping class="ormExpressCorreos.model.Segmento"/>
+        <!--Añada tantas clases como entidades tenga en su modelo-->
+        <!--Las clases deben crearse en el paquete "model"-->
+    </session-factory>
+
+</hibernate-configuration>
