@@ -1,11 +1,10 @@
 package ormExpressCorreos.model;
 
-import jdk.nashorn.internal.codegen.CompilerConstants;
+//import jdk.nashorn.internal.codegen.CompilerConstants;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
-
 
 // @TODO completar las anotaciones de la clase
 @Entity
@@ -24,19 +23,19 @@ public class Direccion {
     @Column(name = "portal")
     private String portal;
 
-
     // @TODO completar las anotaciones de todos los atributos
 
-    public Direccion(Integer numero, Integer piso, String letra, String portal, Calle dirpertenececalle) {  // @TODO: completar
+    public Direccion(Integer numero, Integer piso, String letra, String portal, Calle dirpertenececalle) { // @TODO:
+                                                                                                           // completar
         // @TODO completar el constructor de la clase.
-        //  Para ello son necesarios dos enteros con el número y el piso, y dos strings
+        // Para ello son necesarios dos enteros con el número y el piso, y dos strings
         // con la letra y el portal
-        //  Cree e inicialice el resto de atributos a los valores que considere oportunos
+        // Cree e inicialice el resto de atributos a los valores que considere oportunos
         this.letra = letra;
         this.numero = numero;
         this.piso = piso;
         this.portal = portal;
-        this.dirpertenececalle=dirpertenececalle;
+        this.dirpertenececalle = dirpertenececalle;
 
     }
 
@@ -89,5 +88,5 @@ public class Direccion {
     private Calle dirpertenececalle;
 
     @ManyToMany(mappedBy = "Iden_Vive_En")
-    private Set<UsuarioIdentificado> usuarioIdentificados= new HashSet<>();
+    private Set<UsuarioIdentificado> usuarioIdentificados = new HashSet<>();
 }
