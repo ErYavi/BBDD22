@@ -27,7 +27,8 @@ public class UsuarioIdentificado {
     @JoinColumn(name = "Direccion")
     private Iden_Vive_Dir iden_vive_dir;
 
-    public UsuarioIdentificado(String DNI, String nombre, String apellidos, String email,Iden_Vive_Dir iden_vive_dir) { // @TODO: completar
+    public UsuarioIdentificado(String DNI, String nombre, String apellidos, String email, Iden_Vive_Dir iden_vive_dir) { // @TODO:
+                                                                                                                         // completar
         // @TODO completar el constructor de la clase.
         // Para ello son necesarios strings con el DNI, el nombre, los apellidos y el
         // email del usuario
@@ -36,7 +37,10 @@ public class UsuarioIdentificado {
         this.DNI = DNI;
         this.nombre = nombre;
         this.email = email;
-        this.iden_vive_dir=iden_vive_dir;
+        this.iden_vive_dir = iden_vive_dir;
+    }
+
+    public UsuarioIdentificado() {
     }
 
     public String getDNI() {
@@ -59,6 +63,10 @@ public class UsuarioIdentificado {
         this.DNI = dni;
     }
 
+    public Iden_Vive_Dir getIden_vive_dir() {
+        return iden_vive_dir;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -71,7 +79,8 @@ public class UsuarioIdentificado {
         this.email = email;
     }
 
-    public Iden_Vive_Dir getIden_vive_dir() {
-        return iden_vive_dir;
+    public void setIden_Vive_Dir(Iden_Vive_Dir vive) {
+        this.iden_vive_dir = vive;
     }
+
 }

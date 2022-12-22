@@ -56,9 +56,18 @@ public class Controller {
                         throws SQLException {
                 // @TODO completa este metodo para crear de forma presistente un usuario
                 // identificado
-                UsuarioIdentificado usuario = new UsuarioIdentificado(DNI, nombre, apellidos, email);
+                Iden_Vive_Dir vive = new Iden_Vive_Dir();
+                UsuarioIdentificado usuario = new UsuarioIdentificado();
+                // se deja el campo de direccion vacio ya que no se especifica una aun.
+                usuario.setNombre(nombre);
+                usuario.setApellidos(apellidos);
+                usuario.setDNI(DNI);
+                usuario.setEmail(email);
+                vive.setUsuarioIdentificado(usuario);
+                usuario.setIden_Vive_Dir(vive);
                 session.beginTransaction();
                 session.saveOrUpdate(usuario);
+                session.saveOrUpdate(vive);
                 session.getTransaction().commit();
                 return usuario;
         }
@@ -68,12 +77,12 @@ public class Controller {
                         String provincia, UsuarioIdentificado user) throws SQLException {
                 Provincia prov = new Provincia(provincia);
                 Municipio mun = new Municipio(municipio, prov);
-                Calle objCalle = new Calle(calle, mun);
-                Direccion dir = new Direccion(numero, piso, letra, portal, calle, mun);
+                Calle cal = new Calle(calle, mun);
+                Direccion dir = new Direccion(numero, piso, letra, portal, cal, mun);
                 Iden_Vive_Dir vive = new Iden_Vive_Dir(dir, user);
                 session.beginTransaction();
                 session.saveOrUpdate(mun);
-                session.saveOrUpdate(objCalle);
+                session.saveOrUpdate(cal);
                 session.saveOrUpdate(dir);
                 session.saveOrUpdate(user);
                 session.saveOrUpdate(vive);

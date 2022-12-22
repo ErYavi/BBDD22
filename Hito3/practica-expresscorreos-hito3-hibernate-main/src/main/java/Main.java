@@ -18,7 +18,7 @@ public class Main {
             // necesarias
             // para la creación del usuario identificado y la direccion.
 
-            if (usuario != null && direccion != null) {
+            if (usuarioIdentificado != null && direccion != null) {
                 System.out.println("Se ha creado el usuario identificado " + usuario.getNombre() + " con DNI "
                         + usuario.getDNI() + " que vive en " + direccion.getDireccionCompleta());
             }

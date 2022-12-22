@@ -21,11 +21,23 @@ public class Iden_Vive_Dir {
         this.usuarioIdentificado = usuarioIdentificado;
     }
 
+    public Iden_Vive_Dir() {
+
+    }
+
     public Direccion getDireccion() {
         return direccion;
     }
 
     public UsuarioIdentificado getUsuarioIdentificado() {
         return usuarioIdentificado;
+    }
+
+    public void setDireccion(Direccion dir) {
+        this.direccion = dir;
+    }
+
+    public void setUsuarioIdentificado(UsuarioIdentificado user) {
+        this.usuarioIdentificado = user;
     }
 }

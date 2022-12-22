@@ -34,8 +34,8 @@ public class Recogida {
     @JoinColumn(name = "Calle")
     private Calle calle;
 
-
-    public Recogida(String id_Recogida, Date fechaRec, Cartero cartero, String DNI_Usuario, Direccion direccion, Municipio municipio, Calle calle) {
+    public Recogida(String id_Recogida, Date fechaRec, Cartero cartero, String DNI_Usuario, Direccion direccion,
+            Municipio municipio, Calle calle) {
         Id_Recogida = id_Recogida;
         FechaRec = fechaRec;
         this.cartero = cartero;
@@ -52,7 +52,6 @@ public class Recogida {
     public Date getFechaRec() {
         return FechaRec;
     }
-
 
     public String getDNI_Usuario() {
         return DNI_Usuario;

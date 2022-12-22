@@ -28,6 +28,29 @@
 
         <mapping class="ormExpressCorreos.model.UsuarioGenerico"/>
         <mapping class="ormExpressCorreos.model.UsuarioIdentificado"/>
+        <mapping class="ormExpressCorreos.model.Iden_Vive_Dir"/>
+        <mapping class="ormExpressCorreos.model.Oficina"/>
+        <mapping class="ormExpressCorreos.model.Segmento"/>
+        <mapping class="ormExpressCorreos.model.Direccion"/>
+        <mapping class="ormExpressCorreos.model.Reparto"/>
+        <mapping class="ormExpressCorreos.model.Recogida"/>
+        <mapping class="ormExpressCorreos.model.Cartero"/>
+        <mapping class="ormExpressCorreos.model.Area_envio"/>
+        <mapping class="ormExpressCorreos.model.Ruta"/>
+        <mapping class="ormExpressCorreos.model.Ruta_Incluye_Seg"/>
+        <mapping class="ormExpressCorreos.model.Trabajo"/>
+        <mapping class="ormExpressCorreos.model.Turno"/>
+        <mapping class="ormExpressCorreos.model.Area_Incluye_Area"/>
+        <mapping class="ormExpressCorreos.model.Area_Incluye_Seg"/>
+        <mapping class="ormExpressCorreos.model.Calle"/>
+        <mapping class="ormExpressCorreos.model.Carta"/>
+        <mapping class="ormExpressCorreos.model.Cartero_Reparte_Area"/>
+        <mapping class="ormExpressCorreos.model.Centro_C"/>
+        <mapping class="ormExpressCorreos.model.Certificada"/>
+        <mapping class="ormExpressCorreos.model.Coche"/>
+        <mapping class="ormExpressCorreos.model.Entrega_Cert"/>
+        <mapping class="ormExpressCorreos.model.Paquete"/>
+        <mapping class="ormExpressCorreos.model.Provincia"/>
         <!--Añada tantas clases como entidades tenga en su modelo-->
         <!--Las clases deben crearse en el paquete "model"-->
     </session-factory>
